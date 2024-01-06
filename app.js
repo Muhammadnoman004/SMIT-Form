@@ -29,31 +29,6 @@ getSubbtn.addEventListener("click", async () => {
     let getAddress = document.querySelector(".Addressinp");
     let getQualificaion = document.querySelector("#qualificationinp");
     let getlaptop = document.querySelector("#Laptopinp");
-    let getpicture = document.querySelector("#Upload");
-
-    if (getname.value == "" || getF_name.value == "" || getEmail.value == "" || getphone.value == "" || getCNIC.value == "" || getF_CNIC.value == "" || getDOB.value == "" || getAddress.value == "" || getQualificaion.value == "" || getlaptop.value == "") {
-        alert("Please Fill The Form")
-    }
-    else {
-
-        try {
-            const docRef = await addDoc(collection(db, "users Data"), {
-                Name: getname.value,
-                F_Name: getF_name.value,
-                Email: getEmail.value,
-                Phone: getphone.value,
-                CNIC: getCNIC.value,
-                F_CNIC: getF_CNIC.value,
-                Born: getDOB.value,
-                Address: getAddress.value,
-                Qualification: getQualificaion.value,
-                LapTop: getlaptop.value
-            });
-            console.log("Document written with ID: ", docRef.id);
-        } catch (e) {
-            console.error("Error adding document: ", e);
-        }
-    }
 
     // console.log(getname.value);
     // console.log(getF_name.value);
@@ -65,5 +40,50 @@ getSubbtn.addEventListener("click", async () => {
     // console.log(getAddress.value);
     // console.log(getQualificaion.value);
     // console.log(getlaptop.value);
+    // console.log(getgender.value);
+
+    let getpicture = document.querySelector("#Upload");
+
+    if (getname.value == "" || getF_name.value == "" || getEmail.value == "" || getphone.value == "" || getCNIC.value == "" || getF_CNIC.value == "" || getDOB.value == "" || getAddress.value == "" || getQualificaion.value == "" || getlaptop.value == "" || getgender.value == "" || getcity.value == "" || getcourse.value == "") {
+        alert("Please Fill The Form")
+    }
+    else {
+
+        try {
+            const docRef = await addDoc(collection(db, "users Data"), {
+                City: getcity.value,
+                Course: getcourse.value,
+                Name: getname.value,
+                F_Name: getF_name.value,
+                Email: getEmail.value,
+                Phone: getphone.value,
+                CNIC: getCNIC.value,
+                F_CNIC: getF_CNIC.value,
+                Born: getDOB.value,
+                Gender: getgender.value,
+                Address: getAddress.value,
+                Qualification: getQualificaion.value,
+                LapTop: getlaptop.value,
+                Time: new Date().toLocaleString()
+            });
+            console.log("Document written with ID: ", docRef.id);
+        } catch (e) {
+            console.error("Error adding document: ", e);
+        }
+        getcity.value = ''
+        getcourse.value = ''
+        getname.value = ''
+        getF_name.value = ''
+        getEmail.value = ''
+        getphone.value = ''
+        getCNIC.value = ''
+        getF_CNIC.value = ''
+        getDOB.value = ''
+        getgender.value = ''
+        getAddress.value = ''
+        getQualificaion.value = ''
+        getlaptop.value = ''
+    }
+
 
 })
