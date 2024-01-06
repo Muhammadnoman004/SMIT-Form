@@ -1,5 +1,7 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
 import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-storage.js";
+
 const firebaseConfig = {
     apiKey: "AIzaSyDT2wuvo64TfJyuOUGYpyZmXrhg7TjiNjo",
     authDomain: "smit-form-37a02.firebaseapp.com",
@@ -8,11 +10,69 @@ const firebaseConfig = {
     messagingSenderId: "44619604020",
     appId: "1:44619604020:web:30af6e91247d02c34baa61"
 };
-// Initialize Firebase
+// Initialize Firebase  //
+
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
+const storage = getStorage();
 
+
+let imageURL;
+let imageDiv = document.querySelector(".imageDiv");
+let image = document.querySelector("#image");
 let getSubbtn = document.querySelector("#submit");
+let getpicture = document.querySelector("#Upload");
+
+//  Storage //
+
+const downloadImageUrl = (file) => {
+    return new Promise((resolve, reject) => {
+        const restaurantImageRef = ref(storage, `images/${file.name}`
+        );
+        const uploadTask = uploadBytesResumable(restaurantImageRef, file);
+
+        uploadTask.on(
+            "state_changed",
+            (snapshot) => {
+                const progress =
+                    (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+                console.log('Upload is ' + progress + '% done');
+
+                switch (snapshot.state) {
+                    case "paused":
+                        console.log('Upload is paused');
+                        break;
+                    case "running":
+                        console.log("running");
+                        break;
+                }
+            },
+            (error) => {
+                reject(error);
+            },
+            () => {
+                getDownloadURL(uploadTask.snapshot.ref)
+                    .then((downloadURL) => {
+                        resolve(downloadURL);
+                    })
+                    .catch((error) => {
+                        reject(error);
+                    });
+            }
+        );
+    });
+};
+
+getpicture.addEventListener("change", async () => {
+    if (getpicture.files.length > 0) {
+        const file = getpicture.files[0];
+        imageDiv.style.display = "block";
+        imageURL = await downloadImageUrl(file);
+        if (imageURL) {
+            image.src = imageURL;
+        }
+    }
+})
 
 getSubbtn.addEventListener("click", async () => {
 
@@ -30,27 +90,18 @@ getSubbtn.addEventListener("click", async () => {
     let getQualificaion = document.querySelector("#qualificationinp");
     let getlaptop = document.querySelector("#Laptopinp");
 
-    // console.log(getname.value);
-    // console.log(getF_name.value);
-    // console.log(getEmail.value);
-    // console.log(getphone.value);
-    // console.log(getCNIC.value);
-    // console.log(getF_CNIC.value);
-    // console.log(getDOB.value);
-    // console.log(getAddress.value);
-    // console.log(getQualificaion.value);
-    // console.log(getlaptop.value);
-    // console.log(getgender.value);
+    if (getname.value == "" || getF_name.value == "" || getEmail.value == "" || getphone.value == "" || getCNIC.value == "" || getDOB.value == "" || getAddress.value == "" || getQualificaion.value == "" || getlaptop.value == "" || getgender.value == "" || getcity.value == "" || getcourse.value == "" || getpicture.value == "") {
+        Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "Please Fill The Form Carefully!",
+        });
 
-    let getpicture = document.querySelector("#Upload");
-
-    if (getname.value == "" || getF_name.value == "" || getEmail.value == "" || getphone.value == "" || getCNIC.value == "" || getF_CNIC.value == "" || getDOB.value == "" || getAddress.value == "" || getQualificaion.value == "" || getlaptop.value == "" || getgender.value == "" || getcity.value == "" || getcourse.value == "") {
-        alert("Please Fill The Form")
     }
     else {
 
         try {
-            const docRef = await addDoc(collection(db, "users Data"), {
+            const docRef = await addDoc(collection(db, "Users Data"), {
                 City: getcity.value,
                 Course: getcourse.value,
                 Name: getname.value,
@@ -64,12 +115,28 @@ getSubbtn.addEventListener("click", async () => {
                 Address: getAddress.value,
                 Qualification: getQualificaion.value,
                 LapTop: getlaptop.value,
+                Profile_Image: imageURL,
                 Time: new Date().toLocaleString()
             });
             console.log("Document written with ID: ", docRef.id);
         } catch (e) {
             console.error("Error adding document: ", e);
         }
+        const Toast = Swal.mixin({
+            toast: true,
+            position: "top-center",
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+                toast.onmouseenter = Swal.stopTimer;
+                toast.onmouseleave = Swal.resumeTimer;
+            }
+        });
+        Toast.fire({
+            icon: "success",
+            title: "Your data has been submitted"
+        });
         getcity.value = ''
         getcourse.value = ''
         getname.value = ''
@@ -83,7 +150,8 @@ getSubbtn.addEventListener("click", async () => {
         getAddress.value = ''
         getQualificaion.value = ''
         getlaptop.value = ''
+        getpicture.value = ''
+        imageDiv.style.display = "none"
     }
-
 
 })

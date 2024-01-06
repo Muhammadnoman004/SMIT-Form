@@ -43,26 +43,28 @@ body {
 }
 
 .Form {
-    /* text-align: center !important; */
     padding-left: 70px !important;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-weight: bold;
+
 }
 
 #Studentbtn {
-    background-color: white;
-    color: navy;
-    border: none;
+    background-color: transparent;
+    color: #0d6db7;
+    border: 1px solid #0d6db7 !important;
     padding-left: 15px;
     text-align: center;
-    height: 40px;
-    width: 170px;
+    height: 35px;
+    width: 150px;
     border: 1px solid navy;
     border-radius: 50px;
     background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMwAAADACAMAAAB/Pny7AAAAbFBMVEUAAAD////U1NTn5+dbW1tNTU1oaGj8/Pz4+Pjz8/PR0dHY2Njj4+Ps7OxYWFjv7+/Ly8t8fHyMjIy9vb11dXWioqK2trZgYGCpqakqKipvb2+SkpKEhIQ0NDQWFhYQEBA9PT1GRkYfHx+ampqrYZxJAAAJIUlEQVR4nO2d6ZaiMBCFg8geBEEQFRt7fP93HBBRhARSIYt6+v6eofmEVGpLgQyIovx4QMp0LtMIdHuI9R86uNir43io2uWmUBjHDbK1BpCHjrnpOMthHNddZRudIJ3sArvuDNEEjOtF8dXSDdGXXQSeNwFEhnHcKIxPv7pvnqR95oeeywrjeCFOk7cE6bTPYjMkAL3COJEZ5OVbg3RaX+PA9Ggwboj9vLzovkmINqc4wNEQxjWDuNiedd8cj6wkXeHwCeP6xe4jQTpZZbpyWhicVbrvZrnORdjAmLbuGxGjMqxhdrrvQpS2BvJ134M4YfQ1DwahBCmMT2TrovsGRKr6JpwLKnXfgjgltQn4GpnI+JpHk9SbZvQlxvnkNb5ZmH+0l9nqknqt1+zgdHvRfTdLdNnG+BnP1KGy/1apC3b9JinuIs5HpGlqzYzx6fcU46iXriHBfER4Y51i0xsk0kgwlo8zHalYZllXf8hBh1nVq0hTbnlWmyxwaLlaGkyrNwPaFJhMwQTTKMzfAmg9A8IG08jLtboJdh7OgrDDNIrSnYZA7rBjBIHB3J5Qujv/qOL4Oe9Sj3YnAmAa+Rc1LBcfBMIHU6hhQaiQDxMos237QDqMsgfD8WigMKZCG71jrzPzwaTKjFltzlK5MN5VHQtCV5hlhsIESkM4C2gCgDCpShaEgO8Z0AM4qYU5yfQA1L5l4PcMBhOrZUEolgfjKtwxWxWUXgwBMKHyVG7J7v9DYQLlvRuwRfOEeTqQVBgN9U9QHPCEef7qFxqM4l2mEcgCdDD4+HS6qj2Zxs3Uw4AswB0meO32+41JmSn16x+hBNJy2sJ4w5V9IS08U0POyYaEATcYdzu6yJFgE7GGQsFmPls2gFkRrpKOX7RAQ6rpDLHNt2ITKXokPBoSs3RBYVziVcbPVwvMZKaIAGMSrzLerj4ChuwLjxfNB8Pko+3qI2DITRpjR+IjYMgGYGxGPgOG1KW5H2+9HwHDvGkqJ6mdXug+Y7jjQyUWwY0ILuphfsHujBGOLkJ6ulhD38MaDmOsXlPI5CyvyqR5px0kCdAFZy+v0Jkc36lNNLcCpZsfYXN/58zJ/9bJ1cPkLGfNhjAvidctJSJSngPkzAGY/cDrl2LcVwqLM61+INvMc828XIOSfcfKzwWCAs0OxnnNIlFyIlGiGuYEOkJ7h/Feb5OyaNRbAND672DC1/QMMTljqLcAFayx4Q4zjAIoRkS1D7AHLZmu4XSYeKUsGk9xTjMDVTS604DDlU0rwSt+z2C1pjtMNGzTpqWrAqXGGdpw0sKMA2fKb6I2dw58y1qY0ZKhZ99jhVnNA/Atuwdn4/Q+zfU2x2lpaYLVADsYb3yy4UB7XdXtmxXFeZ+BIaU0aY8YKzujeoRtMh0MqbxHLVkpMwF8nYAOaR2QCjQ3BYoejQ1+MG3ejGShDtRrqelsqOAP5gYzzs00ovp4+KgCBtwGeIchV8Tpdd7in3yWA9iUtTDEwln9zlKtPGFbEq4EFMj0YCjXoy/AWHqldgOK/XswEeWCE9eTnUD7yXhYGhjanj7h5hGNuUBteV6yGwwt6WpPJBPkhgIbcK/5A4Z6zSnjmEv0ns88lqyFIe8yjSazCfJaT6srJ0sNQ3eDp2MjaSWBLS9LDUP/icvJDHwkyUc78i3+FoZuZpPpqBVLaXIi1FIBMPT2vmLmN5Jh0oCZsiGMQzv9W81eVzzNIpbbpkm2sv8YOgoDwRlOjhhmAGPke3usPVN3pNhw4Agbm0mEWSJ3J+yM+g+nEyMOpt49BQ2tuPA5l2JhjFyIGdhDz2TJgTGC5c5AtV229FuJgDHcpbNDN8tfsUZCYOrYs1yQFzgk8JO/RAmCMdyC10hXO16PfyRRMM1UBy4cu1jgjA0kDqbBAW86R4b5C+wSCVPj5CUgAj2XuUgU0TCGEcaFzfR4KruIofWXOYmGaSY/xcVxxrb9s7MYL3VexhIPYzSjbFfp1aa8cAf7mq4wsFrJJikwjTwz8NOstK0H08Hab7PUHw0mFidpMI0cNzJx0AljM5wa6r1cUmFU6w/mXfUH8676g3lX/cG8q/5g3lV/MO8qPhjHdb1IkidfX5g48ZNBUJjWq0+zZLcWkoQcCW83dpnlPk+8AIKpA640Oz4S5TZnuX5Kz262f+tTCgzk2GEiHJ8GWVjxNMPOPKuZ+8v8vxlhPBwnhNIFfGzftEgDB89JjBmfDxOMGWeUzLhYGtrwRCuLmdKeDDA4nWj7WQukmaqQblMGczMLg9PpFLI4mplqrz2PMwMTzqAIpJmvXB/TmRToJIyTsjQw8jZUDVhYioklcbgPE0yQsWXBRdAw9kccsqm/RYdxUubemOU07L0e9kQhlwpjMj6WloarP/SpFaBgfc6oK4cG48PqRstoICxN8wOtBEqBSaHl482CGqsPbSTYUF41IoyXwbsu1tw0Pryb6Exu7CHBRCeeOjgvDQdLbdWIcwIIMGHCV9Pno+FiqQOEE8EMjGEwd38Cz7oBr5cHTTKmGcGYJX/PFZyGm6U2amOaIUyYLOkfg9IsYEGoGp2vH8B412W9cDCaRSw1zbDxegCz+OAihGYhCxpNLnmFEXAOm51mOQv693oA8wVmJeK0AqtnA/NhKPp9cXH7MKaYVlg2GiEsdTjdN2k9GGEnylkiAmH93f0pGz0YcYMLpj/GcXsu4k6t9dboEwYLHMY896YJesdu6s3ZesCInSo1TSOSpX/+4gEjeLD0FI1Ylt70wg4mFH0Yhk4jmgVto1cYwuCJpaLRCGd5zi64w5gX4X+BQiOBBW3CPoycIUxrAs1Kykyh+2jJ+4BDOZ8HHdPIYUFW9ISRsGJaDWkksXSrpp1ucpH0NwbrRsZ6uf8d9wEjcQJTn0Yey32vuQ0EkTni40kjkwWVjjE1Q0OUumhNQCw2oR/vDiN5XElLI5elncnYjJ2Q/dlmq6aR/vHhvXODIc9rFykrUPB9pPYj1AqG4qwVzBJMbzAf+vXpoXYNDHnC+eepamA0fO5HjsLJSQ0fpryG+ZIl0ywaRJ/U8mk6G8jTfQ/iZCAdw/4lyUMa5pbL0gp9jTGrfQCk4XNfsnRFyseWy1OJZPv/CrVDwoaT6Jf1HxbehHofjhijAAAAAElFTkSuQmCC");
     background-repeat: no-repeat;
-    background-size: 15px;
+    background-size: 13px;
     background-position: 20px;
+    font-weight: 500;
+    font-size: small;
 
 }
 
@@ -178,8 +180,27 @@ body {
     border: 1px dashed rgb(0, 102, 255);
 }
 
+.imageDiv {
+    display: none;
+}
+
+#image {
+    width: 100px;
+    height: 100px;
+    border: 1px dashed gray;
+    border-radius: 10px;
+    margin-right: 10px;
+}
+
 .picDiv {
     display: flex;
+}
+
+#progress {
+    position: relative;
+    bottom: 60px;
+    left: 17px;
+    z-index: -1;
 }
 
 #picPara {
@@ -267,11 +288,24 @@ label {
         text-align: center;
         display: flex !important;
         flex-direction: column-reverse !important;
+
+    }
+
+    #icon1 {
+        margin-top: 7px;
     }
 
     .Form {
         padding-left: 0px !important;
+        margin-top: 15px;
+        font-size: 27px;
     }
 
-    .Studentbtn {}
+    #FB {
+        margin-right: 15px;
+    }
+
+    #Youtube {
+        margin-left: 15px;
+    }
 }
